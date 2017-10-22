@@ -19,8 +19,8 @@ class IP(Structure):
             ("ttl", c_ubyte),
             ("protocol_num",    c_ubyte),
             ("sum", c_ushort),
-            ("src", c_ulong),
-            ("dst", c_ulong)
+            ("src", c_uint32),
+            ("dst", c_uint32)
             ]
     def __new__(self, socket_buffer=None):
         return self.from_buffer_copy(socket_buffer)
@@ -31,8 +31,8 @@ class IP(Structure):
         self.protocol_map   =   {1:"ICMP", 6:"TCP", 17:"UDP"}
 
         #Ip addresses legible to the human race ..
-        self.src_address    =   socket.inet_ntoa(struct.pack("<L", self.src))
-        self.dst_address    =   socket.inet_ntoa(struct.pack("<L", self.dst))
+        self.src_address    =   socket.inet_ntoa(struct.pack("@I", self.src))
+        self.dst_address    =   socket.inet_ntoa(struct.pack("@I", self.dst))
 
         #protocol legible to humans
         try:
@@ -61,7 +61,7 @@ if os.name  ==  "nt":
 try:
 
     #read a package
-    raw_buffer  =   sinnfer.recvfrom(65565)[0]
+    raw_buffer  =   sniffer.recvfrom(65565)[0]
 
     #create an ip header from the 20 first bytes of the buffer
     ip_header   =   IP(raw_buffer[0:20])
