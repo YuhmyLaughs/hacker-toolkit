@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115886047-5"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];    function gtag(){dataLayer.push(arguments);}    gtag('js', new Date());
+    gtag('config', 'UA-115886047-5');
+  </script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta property="og:image" content="https://plataforma.doacaoeleitoral.org/static/plataforma/img/img_compartilhamento.png">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="192x192" href="https://res.cloudinary.com/verasnt/image/upload/v1529430785/imgsite/icone_app.png">
+<activity android:screenOrientation="portrait" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="manifest" href="https://res.cloudinary.com/verasnt/raw/upload/v1530106896/secure_contracts/manifest.json">
+
+<meta property="og:image:secure_url" itemprop="image" content="https://plataforma.doacaoeleitoral.org/static/plataforma/img/whatsimg.png">
+<meta property="og:image" itemprop="image" content="https://plataforma.doacaoeleitoral.org/static/plataforma/img/whatsimg.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content=1281>
+<meta property="og:image:height" content=800>
+<meta property="og:type" content=website>
+<link rel="icon" type="image/png" href="/static/plataforma/img/fav_icon.png" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="/static/plataforma/css/style_base.css" />
+<link rel="stylesheet" type="text/css" href="/static/plataforma/css/style_home.css" />
+<script src="/static/plataforma/js/chart.js"></script>
+<title>Doação Eleitoral - Financiamento Coletivo de Campanha Política </title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark minha-nave" style="position: fixed;">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+<div class="navbar-nav">
+<a class="nav-item nav-link" href="/"><img src="https://res.cloudinary.com/verasnt/image/upload/v1533325351/imgsite/marca_doacaoeleitoral_horiz_branca.png" style="height: 28px;" /></a>
+<a class="nav-item nav-link" href="/candidato"><i class="fab fa-black-tie"></i> Área dos candidatos</a>
+<a class="nav-item nav-link" href="https://plataforma.doacaoeleitoral.org/maquininha/"><i class="far fa-credit-card"></i> Maquininha eleitoral</a>
+<a class="nav-item nav-link" href="/transparencia"><i class="far fa-gem"></i> Transparência</a>
+</div>
+</div>
+<a class="btn btn-light" href="/cadastro">Cadastre-se</a>
+</nav> 
+
+
+
+<div class="container-fluid container-do-site clearfix">
+<div class="row header-com-marca">
+<div class="col text-center">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1533329935/imgsite/marca_doacao_branca.svg" class="logo-do-header" alt="doação eleitoral financiamento coletivo de campanha">
+</div>
+</div>
+<div class="row justify-content-md-center row-da-busca">
+<div class="col-md-8 text-center">
+<p class="heading-da-busca">Busque um candidato para doar</p>
+<p class="sub-heading-da-busca">pelo nome, partido ou cargo eleitoral</p>
+<form id="c-form" method="post">
+<input type='hidden' name='csrfmiddlewaretoken' value='KWIHIdakaEWi9mLGt68d5saXrupddC039SzFjUr2mUVEJFkr1h1xXpS4ylb1BqGi' />
+<input type="text" name="search_input" class="input-de-busca" value="" autofocus placeholder="exemplo: João">
+<input id="ppagina" name="pagina" type="hidden" value="1">
+<br>
+<div class="container-do-botao-de-busca">
+<button id="btn-busca" type="submit" class="btn-lg btn btn-light botao-da-busca" disabled>Buscar</button>
+</div>
+<p class="nenhum-resultado"></p>
+</form>
+</div>
+</div>
+<nav class="pagination-content col-sm-12 col-md-12">
+<ul class="pagination justify-content-center">
+</ul>
+</nav>
+
+<div class="row section" id="explicacao">
+<div class="col-sm-12">
+<h1>Doação eleitoral é o site de financiamento coletivo de campanha política. Você pode doar para candidato político online por cartão de crédito, dentro dos limites de financiamento coletivo de campanha eleitoral e crowdfunding para campanha.</h1>
+
+</div>
+<div class="col-sm-12">
+<p>
+Agora é o povo que escolhe quanto cada candidato recebe para fazer sua campanha política por meio do financiamento coletivo de campanha. Fazendo doações online com cartão de crédito para os candidatos em que confiam, os próprios eleitores renovam a política nacional.<br>
+</p>
+<div class="contagem-de-candidatos text-center">
+<div class="">
+<span class="airport-display-board">4</span>
+<span class="airport-display-board">4</span>
+<span class="airport-display-board">5</span>
+</div>
+<p class="texto-contagem-de-candidatos">Candidatos cadastrados</p>
+</div>
+</div>
+<br><br><br>
+</div>
+
+
+<div class="row section" id="form">
+<div class="col-sm-12">
+<h2 style="font-size: 32px;">
+
+Para os candidatos e candidatas
+</h2>
+<h3>Assista ao vídeo abaixo e entenda tudo:</h3>
+<iframe class="youtube-playaa" src="https://www.youtube.com/embed/VAX9MZ2K5K0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen>
+            </iframe>
+<br><br><br><br>
+<h3>
+Não perca tempo, cadastre-se agora e arrecade suas doações.
+</h3>
+<br><br>
+<a href="/cadastro" class="link-cta-quero-receber-doacoes">
+<div class="cta-quero-receber-doacoes mx-auto">
+Quero receber doações
+</div></a>
+<p class="obs">Clique para preencher a ficha cadastral.</p>
+<br><br>
+</div>
+</div>
+
+
+<div class="row section justify-content-md-center" id="prestacao-de-contas">
+<div class="col-md-4">
+<p style="padding: 0; margin-bottom: -15px;">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/medalha_empresa_homologada_TSE.svg" alt="empresa homologada pelo TSE oficial" class="icone_svg"><br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/sombra.png" alt="financiamento coletivo de campanha politica" style="width: 180px; margin-top: -50px; margin-bottom: 0px; opacity: 0.2;"><br>
+</p>
+<h2 style="padding-bottom: 0px;">Empresa homologada pelo TSE em acordo com a Lei nº 9.504</h2>
+<p>
+<a class="clique-pra-ler-mais" data-toggle="collapse" href="#c2" role="button" aria-expanded="false" aria-controls="c2">
+Clique para ler mais <img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/caret-down.svg" alt="como receber doacoesde pessoa fisica cpf" class="caret-down">
+</a>
+</p>
+<div class="collapse" id="c2">
+<p class="section-texto">
+Cadastrada na Justiça Eleitoral nos termos da lei e da regulamentação expedida pelo Banco Central do Brasil, em acordo com todas as diretrizes oficiais do Governo do Brasil para entregar com absoluta segurança o sistema de financiamento coletivo eleitoral aos candidatos às eleições 2018.<br><br>
+(Lei nº 9.504/1997, 13.487/2017 e 13.488/2017. Rés. 23.553/2017)
+</p>
+</div>
+<br><br><br>
+</div>
+<div class="col-md-4">
+<p style="padding: 0; margin-bottom: -15px;">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/prestacao_de_contas.svg" alt="prestacao de contas eleitorais 2018" class="icone_svg"><br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/sombra.png" alt="financiamento coletivo de campanha eleitoral" style="width: 180px; margin-top: -50px; margin-bottom: 0px; opacity: 0.2;"><br>
+</p>
+<h2 style="padding-bottom: 0px;">Prestação de contas eleitorais automática junto ao TSE</h2>
+<p>
+<a class="clique-pra-ler-mais" data-toggle="collapse" href="#c1" role="button" aria-expanded="false" aria-controls="c1">
+Clique para ler mais <img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/caret-down.svg" alt="financiamento publico de campanh eleitoral" class="caret-down">
+</a>
+</p>
+<div class="collapse" id="c1">
+<p class="section-texto">
+A prestação de contas relativas a todas as doações eleitorais é feita automaticamente pelo Doação Eleitoral junto ao TSE. Assim, os candidatos podem se concentrar nas suas campanhas e não na burocracia e contabilidade do financiamento coletivo de campanha política.<br>
+</p>
+</div>
+<br><br><br>
+</div>
+<div class="col-md-4">
+<p style="padding: 0; margin-bottom: -15px;">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/busca_financiamento_coletivo_de_campanha_eleitoral.svg" alt="transparencia prestacao de contas eleitorais" class="icone_svg"><br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/sombra.png" alt="fazer doacao para campanha politica 2018" style="width: 180px; margin-top: -50px; margin-bottom: 0px; opacity: 0.2;"><br>
+</p>
+<h2 style="padding-bottom: 0px;">Portal da transparência das doações eleitorais</h2>
+<p>
+<a class="clique-pra-ler-mais" data-toggle="collapse" href="#c3" role="button" aria-expanded="false" aria-controls="c3">
+Clique para ler mais <img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/caret-down.svg" alt="doação eleitoral" class="caret-down">
+</a>
+</p>
+<div class="collapse" id="c3">
+<p class="section-texto">
+O relatório com todas as doações para candidatos políticos efetudas fica disponível em até 24h no Portal da Transparência do Doação Eleitoral.
+</br>(Em acordo com a lei nº 13.488 / 6 out 2017)<br><br>
+<a href="/transparencia" target="_blank">Transparênca DoaçãoEleitoral.org</a>
+</p>
+</div>
+</div>
+<br><br><br>
+</div>
+
+
+<div class="row section" id="redes-sociais">
+<div class="col-sm-6">
+<h2 style="padding: 0;">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/arrecade_pelas_redes_sociais.svg" alt="receber doação de eleitores" class="icone_svg" style="height: 90px;"><br>
+Capte doações pelo seu site, redes sociais e WhatsApp
+</h2>
+<p>
+<a class="clique-pra-ler-mais" data-toggle="collapse" href="#c4" role="button" aria-expanded="false" aria-controls="c4" style="color: #FFFFFF;">
+Clique para ler mais <img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/caret-down.svg" alt="financiamento publico de campanha politica eleitoral 2018" class="caret-down">
+</a>
+</p>
+<div class="collapse" id="c4">
+<p class="section-texto" style="color: #FFFFFF;">
+Ao cadastrar-se no Doação Eleitoral você receberá um link próprio com seu nome, e quando você compartilhá-lo seus eleitores irão direto para a sua página de doação.<br>
+www.doacaoeleitoral.org/<b>SeuNome</b> !
+</p>
+</div>
+<br><br>
+</div>
+<div class="col-sm-6">
+<h2 style="padding: 0;">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/controlar_doacoes_pelo_celular.svg" alt="site para receber doação de eleitores pessoa fisica" class="icone_svg" style="height: 90px;"><br>
+Controle todas as movimentações da sua conta de campanha pelo celular.
+</h2>
+<p>
+<a class="clique-pra-ler-mais" data-toggle="collapse" href="#c5" role="button" aria-expanded="false" aria-controls="c5" style="color: #FFFFFF;">
+Clique para ler mais <img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/caret-down.svg" alt="doação eleitoral campanha politica 2018" class="caret-down">
+</a>
+</p>
+<div class="collapse" id="c5">
+<p class="section-texto" style="color: #FFFFFF;">
+Você terá acesso ao seu <b>Painel de Controle Pessoal</b>, onde você monitora ao vivo o relatório completo das doações que receber, quanto já recebeu, quanto já gastou, de onde vêm suas doações,
+</p>
+</div>
+</div>
+<p class="text-center"><br><a href="/cadastro" class="btn btn-light" style="padding: 16px;">Cadastre-se agora</a></p>
+</div>
+
+
+<div class="row section" id="maquininha-eleitoral">
+<div class="col-md-5 text-right">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1530976313/imgsite/mockup_maquininha3.png" alt="" class="mockup_maquininha_eleitoral">
+</div>
+<div class="col-md-7">
+<p class="section_maquininha titulo">
+Maquininha Eleitoral
+</p>
+<p class="section_maquininha texto">
+<b>A sua maquininha, no seu celular!</b><br><br>
+100% de acordo com as exigências do TSE e disponível agora para todos os clientes, este aplicativo web é a novidade para arrecadação com cartão de crédito em comícios e eventos. Acesse com seu login e senha em qualquer <i>smartphone</i> e não perca uma doação.
+<br><br>
+As taxas são as mesmas das doações online e não há taxa de adesão. Você ainda controla toda a arrecadação pelo seu Painel Pessoal de Controle, como sempre.
+<br><br>
+<a href="https://plataforma.doacaoeleitoral.org/maquininha/" class="btn btn-light botao-verdinho" style="padding: 18px;">Acessar minha maquininha</a>
+<br><br>
+<span style="font-size: 16px;">Quer arrecadar com a maquininha mas ainda não é cadastrado conosco? <a href="/cadastro">Cadastre-se agora</a>.</span>
+</p>
+</div>
+</div>
+
+
+<div class="row section" id="seguranca">
+<div class="col-sm-12">
+<h2 style="padding: 0;">
+Segurança:<br> criptografia total, o melhor anti-fraudes do mercado e seguindo a regulamentção do Banco Central N° 3.765
+</h2>
+<p>
+<a class="clique-pra-ler-mais" data-toggle="collapse" href="#c6" role="button" aria-expanded="false" aria-controls="c6" style="color: #FFFFFF;">
+Clique para ler mais <img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/caret-down.svg" alt="doar para candidato politico" class="caret-down">
+</a>
+</p>
+<div class="collapse" id="c6">
+<p class="section-texto" style="color: #FFFFFF;">
+Você contará com <b>o melhor sistema anti-fraudes do mercado</b>, que bloqueará qualquer transação maliciosa no Doação Eleitoral. Você terá um sistema blindado com segurança SSL de 256bit de criptografia com PCI Compliance. E estará utilizando um sistema compatível com todos os princípios de segurança indicados pelo Banco Central (Regulação N° 3.765).
+</p>
+</div>
+<p class="text-center">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1528134131/imgsite/site-blindado.png" alt="receber doação de eleitores cpf" class="icone_seguranca" style="height: 39px;">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1530645607/imgsite/neoway-logo-branco.png" alt="receber doações de eleitores" class="icone_seguranca" style="height: 80px; margin-left: 0; margin-top: 0;">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/CIP.png" alt="financiamento coletivo de campanha eleitoral 2018" class="icone_seguranca" style="height: 45px;">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/PCI.png" alt="doar para campanha de candidatopolitico 2018" class="icone_seguranca" style="height: 45px;">
+</p>
+</div>
+</div>
+
+
+<div class="row section" id="namidia">
+<div class="col-sm-12">
+<h2 style="padding: 0; color: #666666;">
+Doação Eleitoral na mídia
+</h2>
+<div class="text-center">
+<a href="https://ricmais.com.br/sc/programas/sc-no-ar/vaquinha-eleitoral-e-alternativa-para-financiamento-de-campanhas" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1533758769/imgsite/logo_record.png" alt="doação eleitoral reportagem" class="img-na-midia">
+</a>
+<a href="http://futura.org.br/trilhas-do-conhecimento/dinheiro-na-campanha-de-onde-vem-e-para-onde-vai/#" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526923723/imgsite/doacao_eleitoral_na_midia_futura.png" alt="doação eleitoral reportagem" class="img-na-midia">
+</a>
+<a href="https://dnsul.com/2018/politica/empresario-cria-site-para-candidatos-receberem-doacoes/" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/doacao_eleitoral_na_midia_1.png" alt="doação eleitoral reportagem" class="img-na-midia">
+</a>
+<a href="https://www.nsctotal.com.br/colunistas/moacir-pereira/empresario-cria-site-para-doacoes-eleitorais-de-pessoas-fisicas" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/doacao_eleitoral_na_midia_2.png" alt="doações eleitorais reportagem" class="img-na-midia">
+</a>
+<a href="http://www.adisc.com.br/coluna/17-04-18PELOESTADO.pdf" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/doacao_eleitoral_na_midia_3.png" alt="doação eleitoral na mídia" class="img-na-midia">
+</a>
+<a href="https://soundcloud.com/sommaiorfm/adelor-lessa-empresario-cria-site-para-doacoes-de-recursos-para-candidatos-as-eleicoes-2018" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/doacao_eleitoral_na_midia_4.png" alt="financiamento coletivo reportagem" class="img-na-midia">
+</a>
+<a href="http://www.adisc.com.br/coluna/17-04-18PELOESTADO.pdf" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/doacao_eleitoral_na_midia_5.png" alt="doação eleitoral na mídia" class="img-na-midia">
+</a>
+<a href="" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/doacao_eleitoral_na_midia_6.png" alt="doação eleitoral na mídia" class="img-na-midia">
+</a>
+<a href="" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/doacao_eleitoral_na_midia_7.png" alt="doação eleitoral na mídia" class="img-na-midia">
+</a>
+<a href="http://vejapolitica.com.br/index.php/2018/05/18/apenas-uma-empresa-recebeu-doacoes-no-primeiro-dia-permitido-por-lei/" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526923723/imgsite/doacao_eleitoral_na_midia_veja_politica.png" alt="doação eleitoral na mídia" class="img-na-midia">
+</a>
+<a href="http://vejapolitica.com.br/index.php/2018/05/14/doacao-eleitoral-site-especializado-ganha-mercado/" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526923723/imgsite/doacao_eleitoral_na_midia_veja_politica.png" alt="doação eleitoral na mídia" class="img-na-midia">
+</a>
+<a href="http://www.sigivilares.com.br/index.php?pag=noticia&id=61932" target="_blank" class="col-md">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526923723/imgsite/doacao_eleitoral_na_midia_sigi.png" alt="doação eleitoral na mídia" class="img-na-midia">
+</a>
+</div>
+</div>
+</div>
+
+
+<div class="row section justify-content-sm-center" id="valor">
+<div class="col-sm-12">
+<h2 style="font-size: 32px; color: #FFFFFF;">
+Valor
+</h2>
+</div>
+<img class="imagem-valor" src="https://res.cloudinary.com/verasnt/image/upload/v1533762899/imgsite/novas-taxas-branco-novo.svg" alt="preço taxas financiamento coletivo de campanha eleitoral">
+</div>
+
+
+<div class="row section" id="mais-info">
+<div class="col-12">
+<h2>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/logo_doacao_eleitoral_financiamento_publico_campanha_eleitoral.png" alt="logo doação eleitoral financiamento coletivo de campanha política eleitoral" class="text-center mx-auto" style="height: 98px; display: none;"></br>
+Dúvidas sobre o financiamento público de campanhas?
+</h2>
+</div>
+<div class="col-md-6">
+<p class="section-texto">
+<a href="https://blog.doacaoeleitoral.org/faq%20doacao%20eleitoral.html" target="_blank" class="btn btn-primary">Ir para o FAQ</a>
+</br></br>Acesse nosso FAQ com as respostas para todas as dúvidas frequentes sobre Doações Eleitorais.</br>
+</p>
+<br>
+</div>
+<div class="col-md-6">
+<p class="section-texto">
+<a href="https://blog.doacaoeleitoral.org/" target="_blank" class="btn btn-primary">Conhecer o BLOG</a>
+</br></br>Fique por dentro de todas as novidades sobre Financiamento Coletivo de Campanhas Eleitorais acessando nosso blog.</br>
+</p>
+</div>
+</div>
+
+</div>
+
+<div class="rodape-mobile">
+<div id="rodape-total">
+<div class="info-rodape-total">
+<br><br><br>
+Empresa autenticada por:<br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1527021059/imgsite/tse-branco.png" alt="" style="width: 40%;">
+</div>
+<div class="info-rodape-total">
+Protocolos de segurança:<br><br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603546/imgsite/CIP.png" alt="" style="width: 20%;"><br><br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/PCI.png" alt="" style="width: 30%;"><br><br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1528134131/imgsite/site-blindado.png" alt="" style="width: 40%;"><br><br>
+</div>
+<div class="info-rodape-total">
+Contato:<br><br>
+<a href="" data-toggle="modal" data-target="#modalFaleConosco">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/icone_faleconosco.svg" style="width: 40%;" alt="duvidas financiamento coletivo 2018"></img>
+</a><br><br>
+<a href="https://www.messenger.com/t/doacaoeleitoral" target="_blank">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/icone_fb.svg" style="width: 20%;"></img>
+</a>
+</div>
+<div class="info-rodape-total">
+Conteúdo:<br><br>
+<a href="http://www.blog.doacaoeleitoral.org/" target="_blank">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1528145547/imgsite/logo-blog.svg" alt="" style="width: 30%; max-width: 140px;">
+</a><br><br>
+<a href="https://www.youtube.com/watch?v=sFb4Ui18Qf0" target="_blank">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/icone_yt.svg" style="width: 20%;"></img>
+</a>
+</div>
+<div class="info-rodape-total">
+Dados legais:<br><br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1528135420/imgsite/logo-todo-branco.svg" alt="" style="width: 40%;"><br><br>
+Doação Eleitoral - https://doacaoeleitoral.org<br>
+<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="482b27263c293c27082c27292b29272d242d213c273a292466273a2f">[email&#160;protected]</a><br>
+Tel.: (48) 3879-3912 / (48) 99177-3912<br>
+Segunda a sexta, das 09:00 às 18:00<br>
+DoaçãoEleitoral.org®<br>
+RBC-VG Financiamento Coletivo Eleitoral S/S<br>
+CNPJ: 26715.934/0001-01<br><br>
+</div>
+</div>
+</div>
+<div id="rodape-desktop">
+<div class="info-rodape-desktop">
+Contato:<br><br>
+<a href="" data-toggle="modal" data-target="#modalFaleConosco">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/icone_faleconosco.svg" style="width: 40%; max-width: 120px;" alt="duvidas financiamento coletivo 2018"></img>
+</a>
+<a href="https://www.messenger.com/t/doacaoeleitoral" target="_blank">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/icone_fb.svg" style="width: 20%; max-width: 50px; margin-left: 12px;"></img>
+</a>
+<br><br><br>
+Conteúdo:<br><br>
+<a href="http://blog.doacaoeleitoral.org/" target="_blank">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1528145547/imgsite/logo-blog.svg" alt="" style="width: 30%; max-width: 140px;">
+</a>
+<a href="https://www.youtube.com/watch?v=sFb4Ui18Qf0" target="_blank">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/icone_yt.svg" style="width: 20%; max-width: 50px; margin-left: 12px;"></img>
+</a>
+</div>
+<div class="info-rodape-desktop">
+Dados legais:<br><br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1528135420/imgsite/logo-todo-branco.svg" alt="" style="width: 40%; max-width: 150px;"><br><br>
+Doação Eleitoral - https://doacaoeleitoral.org<br>
+<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1b7874756f7a6f745b7f747a787a747e777e726f74697a773574697c">[email&#160;protected]</a><br>
+Tel.: (48) 3879-3912 / (48) 99177-3912<br>
+Segunda a sexta, das 09:00 às 18:00<br>
+DoaçãoEleitoral.org®<br>
+RBC-VG Financiamento Coletivo Eleitoral S/S<br>
+CNPJ: 30.274.133/0001-17<br><br>
+</div>
+<div class="info-rodape-desktop">
+Empresa autenticada por:<br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1527021059/imgsite/tse-branco.png" alt="" style="width: 40%; max-width: 120px;">
+<br><br><br>
+Protocolos de segurança:<br><br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603546/imgsite/CIP.png" alt="" style="width: 20%; max-width: 60px;">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1526603556/imgsite/PCI.png" alt="" style="width: 30%; max-width: 66px; margin: 0 0 0 12px;"><br>
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1528134131/imgsite/site-blindado.png" alt="" style="width: 40%; max-width: 150px; margin-top: 12px;"><br><br>
+</div>
+</div>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+<div class="modal fade" id="modalFaleConosco" tabindex="-1" role="dialog" aria-labelledby="modalFaleConoscoLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header" style="border: none;">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<p><b>Se você deseja estar apto a receber doações dos seus eleitores,</br><a href="/cadastro">Clique aqui</a>.</b></br></br>
+Contato através de: <b><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="accfc3c2d8cdd8c3ecc8c3cdcfcdc3c9c0c9c5d8c3decdc082c3decb">[email&#160;protected]</a></b></br>
+ou ligue: (48) 3897-3912 | (48) 99177-3912</br>
+Segunda a sexta, das 09:00 às 18:00</br></br>
+Ou, fale conosco agora mesmo <a href="https://www.messenger.com/t/doacaoeleitoral" target="_blank">pelo facebook!</a>
+</p>
+</div>
+<div class="modal-footer" style="border: none;">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+
+
+<style>
+    .botao-verdinho{ background-color: #0fb29a; color: #FFFFFF; }
+    .botao-verdinho:hover{ background-color: #0ba38c; color: #FFFFFF; }
+    .botao-verdinho.outline{ color: #0fb29a; border: 1px solid #0fb29a; background-color: rgba(0,0,0,0); }
+    .botao-verdinho.outline:hover{ background-color: #0ba38c; color: #FFFFFF; border: 1px solid #0fb29a; }
+  </style>
+
+<div class="modal fade" id="modal-maquininha" tabindex="-1" role="dialog" aria-labelledby="modal-maquininha" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+<div class="modal-content modal-maquininha">
+<div class="row">
+<div class="col-md-5 text-center" style="padding: 0;">
+<img src="https://res.cloudinary.com/verasnt/image/upload/v1530976313/imgsite/mockup_maquininha3.png" alt="" class="mockup-maquininha-modal">
+</div>
+<div class="col-md-7">
+<p class="modal-maquininha-titulo">Maquininha Eleitoral</p>
+<p class="modal-maquininha-texto">Agora sua maquininha de cartão está sempre com você, no seu celular! Disponível para todos os clientes sem nenhum custo adicional.
+<br><br><br>
+<a href="https://plataforma.doacaoeleitoral.org/maquininha/" class="btn btn-light" style="margin-bottom: 15px;">Acessar maquininha</a>
+<a data-dismiss="modal" class="btn btn-outline-light" style="margin-bottom: 15px;">Ok, entendi</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="fb-root"></div>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-customerchat" attribution=install_email page_id="174487409806088" theme_color="#11c196" logged_in_greeting="Olá," logged_out_greeting="Olá,">
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js" integrity="sha256-u7MY6EG5ass8JhTuxBek18r5YG6pllB9zLqE4vZyTn4=" crossorigin="anonymous"></script>
+</body>
+<script>
+  function notready(){
+    alert('Ainda não é disponível o acesso a esta página.')
+  }
+</script>
+
+<script>
+// $(window).on('load',function(){
+//     $('#modal-maquininha').modal('show');
+// });
+
+    $("document").ready(function(){
+        $(".page-link").click(function(event) {
+            event.preventDefault();
+            var href = $(this).attr('href');
+            $('#ppagina').attr('value',href);
+            $('#c-form').submit();
+        });
+
+        var parr = ["PT","PV","PP","DC","PR","SD"];
+        $('input[type="text"]').on("keyup paste", function () {
+            $("button[type=submit]").attr("disabled", "disabled");
+            if($(this).val() && ($(this).val().trim().length >= 3 || parr.indexOf($(this).val().toUpperCase().trim()) > -1))
+                $("button[type=submit]").removeAttr("disabled");
+        });
+    });
+
+   window.fbAsyncInit = function() {
+     FB.init({
+       appId      : '174487409806088',
+       xfbml      : true,
+       version    : 'v2.6'
+     });
+   };
+
+   (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/pt_BR/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+ </script>
+
+<script type="text/javascript">
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca   = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var  c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if ( c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function mostrarModalUmaVez() {
+
+    var visited = getCookie("visited");
+
+    if (visited != "true") {
+        $('#modal-maquininha').modal('show');
+        setCookie("visited", "true", 15);
+    }
+}
+
+  $(window).on('load',function(){
+    mostrarModalUmaVez();
+  });
+  </script>
+</html>
