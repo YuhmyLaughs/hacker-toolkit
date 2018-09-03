@@ -8,6 +8,6 @@ wget -O target.html "$1"
 grep href= target.html | cut -d "/" -f3 | grep "\.com\|\.org" | sort -u > hosts.txt
 #for url in $(cat hosts);do host "$url";done
 while read -r i; do
-  host $i | grep "has address"
+  host $i |grep "has address" 
 done < hosts.txt
 fi
