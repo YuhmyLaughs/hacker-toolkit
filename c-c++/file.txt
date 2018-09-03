@@ -1,4 +1,4 @@
-blog
-plataforma
-teste
-homolog
+blog.
+plataforma.
+teste.
+homolog.

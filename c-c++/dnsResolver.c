@@ -15,15 +15,17 @@ int main( int argc, char *argv[]){
 	dict = fopen(argv[2],"r");
 	if(argc < 2){
 		printf("[*] ONE DNS RESOLVER TO RULE THEM ALL [*]\n You must provide an target and a file with your words\n ./dnsResolv target.com dict.txt");
-	}else{	
-		while(fscanf(dict, "%s", &word) != EOF){
-			result = (char *) strcat(word, target);
-			host = gethostbyname(result);
-			if(host != NULL){
-				printf("%s :::> %s\n", target, inet_ntoa(*((struct in_addr *)host->h_addr)));
-				return -1;
-			}
-		}
+	return (0);
 	}
+	while(fscanf(dict, "%s", &word) != EOF){
+		result = (char *) strcat(word, target);
+		host = gethostbyname(result);
+		if(host == NULL){
+			continue;
+		}				
+		printf("%s :::> %s\n", target, inet_ntoa(*((struct in_addr *)host->h_addr)));
+		return (0);
+	}
+	
 }
 
