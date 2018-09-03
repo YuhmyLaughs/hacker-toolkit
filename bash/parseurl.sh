@@ -10,4 +10,5 @@ grep href= target.html | cut -d "/" -f3 | grep "\.com\|\.org" | sort -u > hosts.
 while read -r i; do
   host $i |grep "has address" 
 done < hosts.txt
+rm target.html hosts.txt
 fi
