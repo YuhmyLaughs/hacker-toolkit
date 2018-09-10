@@ -1,0 +1,8 @@
+rh
+firewall
+intranet
+test
+protected
+financeiro
+webmail
+
