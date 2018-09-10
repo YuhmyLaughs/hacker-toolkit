@@ -5,5 +5,5 @@ echo "Crafted by verasnt"
 for ip in $(seq $2 $3);
 do
 #uncomment the grep part in order to avoid some  useless results
-host $1.$ip #| grep -v $4
+host $1.$ip | grep -v $4
 done
