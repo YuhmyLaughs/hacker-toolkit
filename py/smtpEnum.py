@@ -6,3 +6,5 @@ banner = s.recv(1024)
 print banner
 
 s.send('VRFY root\r\n')
+answer = s.recv(1024)
+print answer
