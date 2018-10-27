@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 import socket
-import sys
+import sys, re
 if len(sys.argv) != 3:
     print "Usage: python smtpEnum.py <IP> <user_list.txt>"
     sys.exit(0)
@@ -12,4 +12,5 @@ print banner
 for user in user_file.readlines():
     s.send('VRFY '+ sys.argv[2]'+\r\n')
     answer = s.recv(1024)
-    print answer
+    if re.search('252', answer):
+        print "[!] User found: "+answer.strip('252.2.0.0')
