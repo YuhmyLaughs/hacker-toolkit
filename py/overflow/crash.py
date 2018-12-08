@@ -1,5 +1,8 @@
 #!/usr/bin/python
 # Overwriting EIP register like a boss. Tested with a BVRP Software POP3 Server on a W95 machine.
+# Please check our pattern-gen.sh script to create and find  the quantity of bytes needed to get to EIP
+# by 0xbadchar
+
 import socket
 
 HOST = "192.168.1.2"
