@@ -1,11 +1,8 @@
 # Hacking toolkit
 
+...
 
-
-## nmapAutomator
-A script that you can run in the background!
-  
-  
+## nmapautomator.sh
 ### Summary
 I have created this script as I was preparing for my OSCP exam.  
 The main goal for this script is to automate all of the process of recon/enumeration that is run every time, and instead focus our attention on real pen testing.  
