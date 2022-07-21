@@ -1,6 +1,11 @@
-# Hacking toolkit
-## nmapautomator.sh
-### Summary
+# Hacker toolkit
+(a bunch of unorganized useful (maybe) stuff)
+
+
+## Items
+
+### nmapautomator.sh
+#### Summary
 The main goal for this script is to automate all of the process of recon/enumeration that is run every time, and instead focus our attention on real pen testing.  
   
 This will ensure two things:  
@@ -10,7 +15,7 @@ This will ensure two things:
 Once you find the inital ports in around 10 seconds, you then can start manually looking into those ports, and let the rest run in the background with no interaction from your side whatsoever.  
   
   
-### Features:
+#### Features:
 1. **Quick:**	Shows all open ports quickly (~15 seconds)  
 1. **Basic:**	Runs Quick Scan, then a runs more thorough scan on found ports (~5 minutes)  
 1. **UDP:**	  Runs "Basic" on UDP ports (~5 minutes)  
@@ -22,7 +27,7 @@ Once you find the inital ports in around 10 seconds, you then can start manually
 I tried to make the script as efficient as possible, so that you would get the results as fast as possible, without duplicating any work.  
   
   
-### Requirements:
+#### Requirements:
 **Required:** Gobuster v3.0 or higher, as it is not backward compatible.  
 You can update gobuster on kali using:  
 ```
@@ -33,7 +38,7 @@ apt-get install gobuster --only-upgrade
 https://github.com/vulnersCom/nmap-vulners  
   
   
-### Examples of use:
+#### Examples of use:
 ./nmapAutomator.sh <TARGET-IP> <TYPE>  
 ./nmapAutomator.sh 10.1.1.1 All  
 ./nmapAutomator.sh 10.1.1.1 Basic  
@@ -42,3 +47,16 @@ https://github.com/vulnersCom/nmap-vulners
 **If you want to use it anywhere on the system, create a shortcut using:**  
 ```ln -s /PATH-TO-FOLDER/nmapautomator.sh /usr/local/bin/```
 
+
+### Mail poison
+#### Summary
+TBD
+### Bash port scanner
+#### Summary
+TBD
+### Logfile analyzer
+#### Summary
+TBD
+### SMTP Enum
+#### Summary
+TBD
